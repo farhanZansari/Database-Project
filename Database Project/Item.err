@@ -1,0 +1,6 @@
+FRM-30064: Unable to parse statement SELECT ALL DEPARTMENT.DNO, DEPARTMENT.DNAME
+FROM DEPARTMENT .
+ORA-12571: TNS:packet writer failure
+Record Group LOV5
+Form: ITEM
+FRM-30085: Unable to adjust form for output.

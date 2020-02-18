@@ -1,0 +1,3 @@
+User scott
+pass tiger
+connection orcl1

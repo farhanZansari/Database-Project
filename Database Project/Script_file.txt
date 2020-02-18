@@ -1,0 +1,54 @@
+create table branch
+(b_no number(4),
+b_name varchar2(20),
+b_add varchar2(50),
+constraint pk_branch primary key(b_no));
+/
+create table customer
+(c_no number(4),
+c_name varchar2(30),
+c_detaile varchar2(60),
+constraint pk_customer primary key(c_no));
+/
+create table department
+(dno number(3),
+dname varchar2(20),
+constraint pk_department primary key(dno));
+/
+create table employee
+(eno number(5),
+ename varchar2(20),
+eposition varchar2(20),
+b_no number(4),
+dno number(3),
+constraint pk_employee primary key(eno),
+constraint fk_branch foreign key(b_no) references branch,
+constraint fk_department foreign key(dno) references department);
+/
+create table items
+(item_no number(3),
+item_name varchar2(20),
+item_unit_price number(9),
+qty_in_stock number(9),
+dno number(3),
+constraint pk_items primary key(item_no),
+constraint fk_items foreign key(dno) references department);
+/
+create table sales_head
+(sale_no number(20),
+sale_date date,
+c_no number(4),
+eno number(5),
+constraint pk_sales_head primary key(sale_no),
+constraint fk_sales_head foreign key(c_no) references customer,
+constraint fk_emp_sales_head foreign key(eno) references employee);
+/
+create table sale_details
+(sale_no number(20),
+item_no number(3),
+qty_sold number(38),
+total_price number(38),
+constraint pk_sale_details primary key(sale_no, item_no),
+constraint fk_emp_sale_details foreign key(item_no) references items,
+constraint fk_sale_number_sale_detail foreign key(sale_no) references sales_head);
+
